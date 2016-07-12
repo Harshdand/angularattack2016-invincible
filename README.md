@@ -39,7 +39,7 @@ If you receive an error message `"You do not have permission to publish to invin
 
 ### Step 3) Add Your Team Members to Surge
 
-* `surge . --add harshdand2@gmail.com`
+* `surge . --add email`
 
 
 ### Step 4) Wait til competition starts
