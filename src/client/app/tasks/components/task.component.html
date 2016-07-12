@@ -1,0 +1,119 @@
+<div class="col-sm-6 col-xs-12 "
+     (mouseenter)="hovered = true;"
+     (mouseleave)="hovered = false;"
+     [ngClass]="{
+     'col-sm-push-3 st-todays-tasks': displayAt === 'home',
+     'st-tasks-col': displayAt !== 'home'
+     }">
+
+  <span class="st-pill"
+        *ngIf="displayAt !== 'home'"
+        [ngClass]="
+    {'st-do-first-pill': category === 'doFirst',
+    'st-schedule-pill': category === 'schedule',
+    'st-delegate-pill': category === 'delegate',
+    'st-delete-pill': category === 'doLater'}">
+      {{title}}
+      <span class="st-task-category" *ngIf="hovered">
+        - {{description}}
+      </span>
+      <span class="st-badge">{{tasks | counter}}</span>
+  </span>
+  <div class="col-xs-12 st-tasks-container">
+
+    <div *ngFor="let task of tasks" class="panel panel-default st-panel"
+         [ngClass]="{'st-panel-open':task.view?.heighlight}">
+      <div class="panel-heading st-panel-heading" (click)="heighlight(task, $index)"
+           (mouseenter)="task.view.displayControls = true;"
+           (mouseleave)="task.view.displayControls = false;">
+        <h3 class="panel-title">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1 col-xs-7">
+              <div class="checkbox" (click)="$event.stopPropagation();">
+                <input type="checkbox" [(ngModel)]="task.completed"
+                       (change)="changeTaskStatus($event, task)">
+                <label></label>
+              </div>
+            </div>
+            <div class="col-md-8 col-sm-7 col-xs-7 st-task-text">
+                    <span [ngClass]="{'sc-task-completed':task.completed}"
+                          *ngIf="!task.view.editable">
+                      {{task.text}}
+                    </span>
+                    <span class="glyphicon glyphicon-flash st-btn-icon"
+                    *ngIf="task.reminderDate === todayDate" title="Complete Today"></span>
+              <div class="st-task-extras">
+                <span class="glyphicon glyphicon-th-list" *ngIf="task.subtasks?.length"></span>
+                <span *ngIf="task.subtasks?.length">{{task.subtasks.length}}</span>
+              </div>
+              <input type="text" class="form-control st-input"
+                     *ngIf="task.view.editable" [(ngModel)]="task.text" autoFocus
+                     (blur)="closeEditTask(task)" (keyup)="changeTask($event, task)"
+                     spellcheck="false">
+              
+              <input type="text" class="form-control st-input"
+                     *ngIf="task.view.setDate" [(ngModel)]="task.view.date" autoFocus
+                     (blur)="closeEditDate(task)" (keyup)="updateDate($event, task)"
+                     spellcheck="false" placeholder="MM/DD/YYYY">
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-4 st-task-controls-wrapper"
+                 *ngIf="displayAt !== 'home'">
+              <span *ngIf="task.view.displayControls">
+                <span class="glyphicon glyphicon-calendar st-btn-icon"
+                      (click)="task.view.setDate = !task.view.setDate" title="Set Date">
+                </span>
+                <span class="glyphicon glyphicon-pencil st-btn-icon"
+                      (click)="editTask($event, task)" title="Edit">
+                </span>
+                <span class="glyphicon glyphicon-trash st-btn-icon"
+                      (click)="deleteTask($event, task)" title="Delete">
+                </span>
+              </span>
+            </div>
+          </div>
+        </h3>
+      </div>
+      <div *ngIf="task.subtasks && task.subtasks.length && task.view?.displaySubtasks"
+           class="panel-body st-panel-body">
+        <ul class="st-subtask-list">
+          <li class="st-subtask-list-item" *ngFor="let subtask of task.subtasks">
+            <div class="checkbox" (click)="$event.stopPropagation();">
+              <input type="checkbox" [(ngModel)]="subtask.completed">
+              <label></label>
+            </div>
+            <span [ngClass]="{'sc-task-completed':subtask.completed}">                
+                  {{subtask.text}}
+                </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="displayAt !== 'home'">
+    <div class="col-sm-12 st-form-group">
+      <input type="text" class="form-control st-form-input" placeholder="Add todo"
+             [(ngModel)]="newTask.doFirst"
+             (keyup)="addTask($event, category)"
+             *ngIf="category === 'doFirst'"
+             spellcheck="false">
+
+      <input type="text" class="form-control st-form-input" placeholder="Add todo"
+             [(ngModel)]="newTask.schedule"
+             (keyup)="addTask($event, category)"
+             *ngIf="category === 'schedule'"
+             spellcheck="false">
+
+      <input type="text" class="form-control st-form-input" placeholder="Add todo"
+             [(ngModel)]="newTask.delegate"
+             (keyup)="addTask($event, category)"
+             *ngIf="category === 'delegate'"
+             spellcheck="false">
+
+      <input type="text" class="form-control st-form-input" placeholder="Add todo"
+             [(ngModel)]="newTask.doLater"
+             (keyup)="addTask($event, category)"
+             *ngIf="category === 'doLater'"
+             spellcheck="false">
+    </div>
+  </div>
+</div>

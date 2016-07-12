@@ -1,0 +1,76 @@
+<div class="row st-tasks-page">
+
+  <!--left sidebar-->
+  <div class="col-md-3 st-tasks-sidebar">
+    <div class="row st-row">
+      <div class="panel panel-default st-panel">
+        <div class="panel-heading st-panel-heading">
+          <h3 class="panel-title">Today (Todo's Remaining)</h3>
+        </div>
+        <div class="panel-body st-panel-body">
+          <div class="row">
+            <div class="col-xs-12 st-tasks-counter">
+              <span class="st-tasks-counter-text">
+                {{todayTasks | counter}}/{{todayTasks.length}}
+                </span>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 st-tasks-controls">
+                <a class="btn btn-default st-btn st-btn-sm" [routerLink]="['/']">Home</a>
+                <a class="btn btn-default st-btn st-btn-sm" (click)="deleteCompletedTodos()">
+                  Delete Completed Todos
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--tasks area-->
+  <div class="col-md-9">
+
+    <!--top tasks row-->
+    <div class="row st-tasks-row-top">
+
+      <!--do first category-->
+      <st-task-category [tasks]="allTasks.doFirst"
+                        [category]="'doFirst'"
+                        [title]="'Do First'"
+                        [description]="'Important + Urgent Tasks'"
+                        (onTaskDelete)="deleteTask($event)">
+      </st-task-category>
+
+      <!--schedule category-->
+      <st-task-category [tasks]="allTasks.schedule"
+                        [category]="'schedule'"
+                        [title]="'Schedule'"
+                        [description]="'Important + Not Urgent Tasks'"
+                        (onTaskDelete)="deleteTask($event)">
+      </st-task-category>
+    </div>
+
+    <!--bottom tasks row   -->
+    <div class="row st-tasks-row-bottom">
+
+      <!--delegate category-->
+      <st-task-category [tasks]="allTasks.delegate"
+                        [category]="'delegate'"
+                        [title]="'Delegate'"
+                        [description]="'Not Important + Urgent Task'"
+                        (onTaskDelete)="deleteTask($event)">
+      </st-task-category>
+
+      <!--do later category-->
+      <st-task-category [tasks]="allTasks.doLater"
+                        [category]="'doLater'"
+                        [title]="'Do Later/Dont Do'"
+                        [description]="'Not Important + Not Urgent Tasks'"
+                        (onTaskDelete)="deleteTask($event)">
+      </st-task-category>
+
+    </div>
+  </div>
+</div>

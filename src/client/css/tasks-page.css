@@ -1,0 +1,156 @@
+.st-tasks-page .st-tasks-row-top {
+  height: 50vh;
+  padding: 10px 0;
+}
+
+.st-tasks-page .st-tasks-row-bottom {
+  height: 42vh;
+  padding: 10px 0;
+}
+
+.st-tasks-page .st-tasks-col {
+  height: 100%;
+}
+
+.st-pill {
+  padding: 6px 15px;
+  border-radius: 1px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.st-do-first-pill {
+  background-color: rgba(170, 214, 89, 0.80);
+}
+
+.st-schedule-pill {
+  background-color: rgba(77, 189, 255, 0.80);
+}
+
+.st-delegate-pill {
+  background-color: rgba(255, 189, 75, 0.80);
+}
+
+.st-delete-pill {
+  background-color: rgba(255, 96, 74, 0.80);
+}
+
+.st-tasks-page .st-tasks-container {
+  padding: 0;
+  max-height: 78%;
+  overflow: auto;
+}
+
+.st-tasks-page .st-panel {
+  margin: 0 0 1px 0;
+}
+
+.st-tasks-page .st-panel-heading {
+  padding: 10px 15px;
+}
+
+.st-badge {
+  padding: 2px 7px;
+  background: rgba(0, 0, 0, 0.37);
+  border-radius: 2px;
+  margin-left: 5px;
+}
+
+.st-tasks-sidebar {
+  padding-top: 10px;
+  padding-left: 25px;
+}
+
+.st-tasks-sidebar .st-row {
+  height: 92vh;
+}
+
+.st-tasks-sidebar .st-row .st-panel,
+.st-tasks-sidebar .st-row .st-panel-body {
+  height: 100%;
+}
+
+.st-tasks-sidebar .st-row .st-panel-body {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.st-task-category {
+  padding-left: 3px;
+}
+
+.st-tasks-counter {
+  text-align: center;
+}
+
+.st-tasks-counter .st-tasks-counter-text {
+  font-weight: 500;
+  font-size: 70px;
+  display: inline-block;
+  border: 5px solid #fff;
+  color: #fff;
+  padding-top: 35px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.st-tasks-completed-counter-text {
+  border-color: rgba(170, 214, 89, 0.80);
+  color: rgba(170, 214, 89, 0.80);
+}
+
+.st-form-group {
+  padding: 0;
+}
+
+.st-form-group .st-form-input {
+  font-size: 16px;
+  border: 2px solid rgb(178, 191, 191);
+  border-radius: 1px;
+  color: #8E8D8D;
+  background: #E7EDE9;
+  font-weight: 500;
+}
+
+.st-form-group .st-form-input:focus {
+  box-shadow: none;
+}
+
+.st-tasks-controls {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.st-tasks-controls .st-btn {
+  margin: 0 5px;
+}
+
+.st-btn-icon {
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.st-task-controls-wrapper {
+  text-align: right;
+}
+
+.st-input {
+  border-radius: 1px;
+  border: none;
+}
+
+.st-input:focus {
+  box-shadow: none;
+}
+
+.st-task-extras {
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.st-task-text {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,154 @@
+html,
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+  height: 100%;
+  background: url(../assets/background1.png);
+  background-size: cover;
+}
+
+/*scrollbars*/
+
+::-webkit-scrollbar-track {
+  background-color: rgba(245, 245, 245, 0.19);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: rgba(248, 249, 245, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.43);
+}
+
+/*loader*/
+
+.cssload-container {
+  left: 48vw;
+  top: 45vh;
+  position: absolute;
+  height: 49px;
+  text-align: center;
+}
+
+.cssload-speeding-wheel {
+  width: 49px;
+  height: 49px;
+  margin: 0 auto;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  animation: cssload-spin 575ms infinite linear;
+  -o-animation: cssload-spin 575ms infinite linear;
+  -ms-animation: cssload-spin 575ms infinite linear;
+  -webkit-animation: cssload-spin 575ms infinite linear;
+  -moz-animation: cssload-spin 575ms infinite linear;
+}
+
+@keyframes cssload-spin {
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes cssload-spin {
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes cssload-spin {
+  100% {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes cssload-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes cssload-spin {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/*app styles*/
+.st-app-title{
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: 500;
+  font-size: 35px;
+  margin-top: 35vh;
+  font-style: italic;
+}
+
+.st-btn {
+  background: rgba(0, 0, 0, 0.25);
+  border: 2px solid;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+.st-btn.st-btn-sm {
+  font-size: 16px;
+}
+
+.btn.st-btn:hover,
+.btn.st-btn:active {
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.panel.st-panel {
+  border: none;
+  border-radius: 1px;
+  margin: 0 15px 1px 15px;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.panel-heading.st-panel-heading {
+  border: none;
+  border-radius: 1px;
+  padding: 20px 15px;
+  background: rgba(255, 255, 255, 0.24);
+  color: rgba(255, 255, 255, 0.80);
+}
+
+.panel-body.st-panel-body {
+  background: #E7EDE9;
+  color: #8E8D8D;
+  font-weight: 500;
+  padding: 15px 20px;
+}
+
+.st-subtask-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.st-subtask-list-item .checkbox label::after {
+  top: 0;
+}
+
+.sc-task-completed {
+  text-decoration: line-through;
+}
+
+.panel.st-panel.st-panel-open {
+  margin: 0 0 1px 0;
+}

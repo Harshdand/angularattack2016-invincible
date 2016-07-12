@@ -1,0 +1,97 @@
+<div class="row st-home">
+  <div class="col-xs-12">
+
+    <!--todays date -->
+    <div class="row st-today-container">
+      <div class="col-xs-12">
+        <span class="st-today">{{today | date}}</span>
+      </div>
+    </div>
+
+    <!--greeting container-->
+    <div class="row st-greeting-container">
+      <div class="col-xs-12">
+        <div class="st-greeting-text">
+          {{greetingMessage}}, 
+          <span (click)="displayUserNameField = true"
+                *ngIf="!displayUserNameField && userName">
+            {{userName}}
+          </span>
+          <input class="st-user-name" type="text" [(ngModel)]="userName"
+                 (blur)="setUserName()"
+                 *ngIf="displayUserNameField || !userName"
+                 autofocus placeholder="Enter name">
+        </div>
+        <div class="st-tasks-left-text">
+          You have {{todayTasks | counter }} tasks left
+        </div>
+      </div>
+    </div>
+
+    <!--today tasks-->
+    <div class="row st-todays-tasks-container">
+
+      <div class="st-all-tasks-done"
+           *ngIf="!todayTasks || todayTasks.length == 0">
+        <span>Yay!! All Tasks Done</span>
+      </div>
+
+      <st-task-category [tasks]="todayTasks"
+                        [category]="'doFirst'"
+                        [title]="'Do First'"
+                        [displayAt]="'home'"
+                        [description]="'Important + Urgent Tasks'"
+                        *ngIf="todayTasks && todayTasks.length">
+      </st-task-category>
+
+    </div>
+
+    <!--home controls-->
+    <div class="row st-home-controls">
+      <div class="col-xs-12">
+        <a class="btn btn-default st-btn"
+           [routerLink]="['/tasks']">
+          Goto Task Manager
+        </a>
+        <a class="btn btn-default st-btn"
+           (click)="displayAbout = true;">
+          About
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="st-about" *ngIf="displayAbout">
+    <h2>About Smart Todo
+      <a (click)="displayAbout = false;">X</a>
+    </h2>
+    <p>Smart Todo application is based on Eisenhower Matrix</p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <p>Important/Urgent quadrant are done immediately and personally e.g. crises, deadlines, problems.</p>
+          <p>
+            Less Important/Urgent quadrant are delegated e.g. interruptions, meetings, activities.
+
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <img src="../../../assets/eisenhover-matrix.png" alt="eisenhover matrix"
+               class="img-responsive">
+        </div>
+        <div class="col-sm-4">
+          <P>
+            Important/Less Urgent quadrant get an end date and are done personally e.g. relationships, planning,
+            recreation.
+          </P>
+          <P>
+            Less Important/Not Urgent quadrant are dropped e.g. time wasters, pleasant activities, trivia.
+          </P>
+        </div>
+
+      </div>
+      <p>Using the Eisenhower Decision Principle, tasks are evaluated using the criteria important/less important and
+        urgent/less urgent, and then placed in according quadrants in an Eisenhower Matrix.
+      </p>
+    </div>
+  </div>
+</div>
